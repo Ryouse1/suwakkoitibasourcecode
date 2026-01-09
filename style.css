@@ -1,20 +1,24 @@
+/* 全体 */
 body {
-  font-family: monospace;
+  background-color: #000;   /* 背景黒 */
+  color: #fff;              /* 文字白 */
+  font-family: monospace;   /* モノスペース */
   padding: 20px;
-  background: #000;  /* 背景を黒に */
-  color: #fff;       /* デフォルト文字色を白に */
+  line-height: 1.5;
 }
 
+/* コードブロック */
 pre {
-  background: #000;  /* コードブロックも黒に */
-  color: #fff;       /* コード文字を白に */
-  padding: 15px;
-  border-radius: 8px;
-  overflow-x: auto;
-  white-space: pre-wrap;
+  background-color: #000;   /* 背景黒 */
+  color: #fff;              /* 文字白 */
+  padding: 10px;
+  border: none;             /* 境界線なし */
+  white-space: pre;         /* 改行保持 */
+  overflow-x: auto;         /* 横スクロール可能 */
 }
 
+/* コメント風 */
 .comment {
-  color: #fff;       /* コメントも白に */
+  color: #fff;              /* 白文字 */
   margin-bottom: 5px;
 }
