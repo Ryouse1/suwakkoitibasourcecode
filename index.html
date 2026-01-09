@@ -2,30 +2,38 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>ソースコード表示（1999年風）</title>
+<title>ソースコード表示（レトロ風）</title>
+
 <style>
+
+/* レトロっぽいビットマップフォント */
+@font-face {
+  font-family: "PixelOperatorMono";
+  src: url("PixelOperatorMono.woff2") format("woff2"),
+       url("PixelOperatorMono.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* ページ全体 */
 body {
-  background-color: #000;  /* 背景黒 */
+  background-color: #000;  /* 黒背景 */
   color: #fff;             /* 文字白 */
-  font-family: Helvetica, Arial, sans-serif, "MS PGothic", "MS Gothic", Osaka;
-  font-size: 14px;
+  font-family: "PixelOperatorMono", monospace; /* レトロ風 */
+  font-size: 16px;
   line-height: 1.3;
   margin: 20px;
 }
 
-/* コードブロック（1999年風） */
+/* コードブロック */
 pre {
-  background-color: #000; 
+  background: #000;
   color: #fff;
-  font-family: "Courier New", Courier, monospace, "MS Gothic", Osaka; /* 英数字はCourier、日本語もMS Gothic系 */
-  font-size: 14px;
-  line-height: 1.3;
+  font-family: "PixelOperatorMono", monospace; /* レトロ等幅 */
+  font-size: 16px;
   white-space: pre;
   overflow-x: auto;
   padding: 10px;
-  border-radius: 0; /* 当時は角丸なし */
-  border: none;
 }
 
 /* GitHubリンク */
@@ -34,23 +42,22 @@ pre {
 }
 
 .github-link a {
-  color: #00aaff;       /* リンク青 */
+  color: #00aaff;
   text-decoration: underline;
 }
-
 .github-link a:hover {
-  color: #55ccff;       /* ホバー水色 */
+  color: #55ccff;
 }
+
 </style>
+
 </head>
 <body>
 
-<!-- ソースコード表示 -->
 <div>
   <pre id="code-block">読み込み中…</pre>
 </div>
 
-<!-- GitHub リンク -->
 <div class="github-link">
   <a href="https://github.com/Ryouse1/Suwakkoitiba" target="_blank">ソースコード</a>
 </div>
@@ -69,8 +76,6 @@ async function loadCode() {
       const res = await fetch(url);
       if (!res.ok) throw new Error('読み込み失敗: ' + url);
       const code = await res.text();
-
-      // 生のコードをそのまま表示（固定CSS・1999年風）
       combinedCode += code + '\n';
     } catch (e) {
       combinedCode += '読み込みエラー: ' + e.message + '\n';
