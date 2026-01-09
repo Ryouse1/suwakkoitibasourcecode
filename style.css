@@ -1,12 +1,13 @@
 body {
   font-family: monospace;
   padding: 20px;
-  background: #f0f0f0;
+  background: #000;  /* 背景を黒に */
+  color: #fff;       /* デフォルト文字色を白に */
 }
 
 pre {
-  background: #272822;
-  color: #f8f8f2;
+  background: #000;  /* コードブロックも黒に */
+  color: #fff;       /* コード文字を白に */
   padding: 15px;
   border-radius: 8px;
   overflow-x: auto;
@@ -14,6 +15,6 @@ pre {
 }
 
 .comment {
-  color: #75715e;
+  color: #fff;       /* コメントも白に */
   margin-bottom: 5px;
 }
