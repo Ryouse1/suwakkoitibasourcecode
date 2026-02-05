@@ -1,46 +1,43 @@
 (() => {
-  // ===== body 初期化 =====
-  document.documentElement.style.height = "100%";
+  // ===== body =====
   document.body.style.margin = "0";
-  document.body.style.height = "100%";
   document.body.style.background = "#1e1e1e";
   document.body.style.overflow = "hidden";
-  document.body.style.fontFamily =
-    "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
 
-  // ===== エディタ（重要：div）=====
-  const editor = document.createElement("div");
+  // ===== editor =====
+  const editor = document.createElement("pre");
   editor.contentEditable = "true";
   editor.spellcheck = false;
 
-  // 見た目
   editor.style.margin = "0";
   editor.style.padding = "16px";
   editor.style.width = "100vw";
   editor.style.height = "100vh";
   editor.style.boxSizing = "border-box";
 
-  editor.style.background = "#1e1e1e";
-  editor.style.color = "#ffffff";     // 完全な白
-  editor.style.whiteSpace = "pre";    // pre相当
-  editor.style.outline = "none";
+  // ★ 元のソースコード系フォント
+  editor.style.fontFamily =
+    "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
+
+  editor.style.fontSize = "20px";     // ← ちゃんと変わる
+  editor.style.fontWeight = "600";    // ← 太さもOK
   editor.style.lineHeight = "1.5";
 
-  // ★ size がちゃんと変わる
-  editor.style.fontSize = "17px";
-  editor.style.fontWeight = "200";
-
-  // スクロール
+  editor.style.color = "#ffffff";
+  editor.style.background = "#1e1e1e";
+  editor.style.whiteSpace = "pre";
+  editor.style.outline = "none";
   editor.style.overflow = "auto";
 
-  // 初期テキスト
+  // Safari 対策（重要）
+  editor.style.setProperty("font-size", "20px", "important");
+  editor.style.setProperty("font-weight", "600", "important");
+
   editor.textContent =
-`// 自由に文字を書ける
-// font-size は確実に反映される
-// pre じゃないのがポイント
+`// フォントは元どおり
+// size / weight も効く
 `;
 
-  // ===== Tabキー対応 =====
   editor.addEventListener("keydown", e => {
     if (e.key === "Tab") {
       e.preventDefault();
@@ -48,7 +45,6 @@
     }
   });
 
-  // ===== 追加 =====
   document.body.appendChild(editor);
   editor.focus();
 })();
