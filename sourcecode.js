@@ -15,8 +15,8 @@
 
   editor.style.margin = "0";
   editor.style.padding = "16px";
-  editor.style.width = "100vw";      // ← 横もフル
-  editor.style.height = "100vh";     // ← 縦フル
+  editor.style.width = "200vw";      // ← 横もフル
+  editor.style.height = "200vh";     // ← 縦フル
   editor.style.color = "#ffffff";    // ← 完全な白
   editor.style.outline = "none";
   editor.style.whiteSpace = "pre";
