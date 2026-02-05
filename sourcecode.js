@@ -1,43 +1,37 @@
 (() => {
-  // ===== body =====
+  // ===== body 初期化 =====
   document.body.style.margin = "0";
+  document.body.style.width = "100vw";
+  document.body.style.height = "100vh";
   document.body.style.background = "#1e1e1e";
   document.body.style.overflow = "hidden";
+  document.body.style.fontFamily =
+    "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
 
-  // ===== editor =====
+  // ===== エディタ =====
   const editor = document.createElement("pre");
   editor.contentEditable = "true";
   editor.spellcheck = false;
 
   editor.style.margin = "0";
   editor.style.padding = "16px";
-  editor.style.width = "100vw";
-  editor.style.height = "100vh";
-  editor.style.boxSizing = "border-box";
-
-  // ★ 元のソースコード系フォント
-  editor.style.fontFamily =
-    "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
-
-  editor.style.fontSize = "20px";     // ← ちゃんと変わる
-  editor.style.fontWeight = "600";    // ← 太さもOK
-  editor.style.lineHeight = "1.5";
-
-  editor.style.color = "#ffffff";
-  editor.style.background = "#1e1e1e";
-  editor.style.whiteSpace = "pre";
+  editor.style.width = "100vw";      // ← 横もフル
+  editor.style.height = "100vh";     // ← 縦フル
+  editor.style.color = "#ffffff";    // ← 完全な白
   editor.style.outline = "none";
-  editor.style.overflow = "auto";
+  editor.style.whiteSpace = "pre";
+  editor.style.lineHeight = "1.5";
+  editor.style.boxSizing = "border-box";
+  editor.style.fontSize = "13px";    // ← ソースビュー感（好みで調整）
 
-  // Safari 対策（重要）
-  editor.style.setProperty("font-size", "20px", "important");
-  editor.style.setProperty("font-weight", "600", "important");
-
+  // 初期テキスト
   editor.textContent =
-`// フォントは元どおり
-// size / weight も効く
+`// 自由に文字を書ける
+// これは JS だけで動くエディタ
+// 保存もUIもなし、打つだけ
 `;
 
+  // ===== Tabキー対応 =====
   editor.addEventListener("keydown", e => {
     if (e.key === "Tab") {
       e.preventDefault();
@@ -45,6 +39,9 @@
     }
   });
 
+  // ===== 追加 =====
   document.body.appendChild(editor);
+
+  // 自動フォーカス
   editor.focus();
 })();
