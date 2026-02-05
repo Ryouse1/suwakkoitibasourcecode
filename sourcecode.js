@@ -1,6 +1,7 @@
 (() => {
   // ===== body 初期化 =====
   document.body.style.margin = "0";
+  document.body.style.width = "100vw";
   document.body.style.height = "100vh";
   document.body.style.background = "#1e1e1e";
   document.body.style.overflow = "hidden";
@@ -14,14 +15,16 @@
 
   editor.style.margin = "0";
   editor.style.padding = "16px";
-  editor.style.height = "100vh";
-  editor.style.color = "#d4d4d4";
+  editor.style.width = "100vw";      // ← 横もフル
+  editor.style.height = "100vh";     // ← 縦フル
+  editor.style.color = "#ffffff";    // ← 完全な白
   editor.style.outline = "none";
   editor.style.whiteSpace = "pre";
   editor.style.lineHeight = "1.5";
   editor.style.boxSizing = "border-box";
+  editor.style.fontSize = "13px";    // ← ソースビュー感（好みで調整）
 
-  // 初期テキスト（任意）
+  // 初期テキスト
   editor.textContent =
 `// 自由に文字を書ける
 // これは JS だけで動くエディタ
